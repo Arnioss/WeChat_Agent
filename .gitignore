@@ -1,0 +1,20 @@
+.env
+.env.*
+!.env.example
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local IDE/workspace files
+.idea/
+.vscode/
+
+# Runtime caches and generated artifacts
+.mcp_cache/
+.rag_store/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,51 @@
+name: Bug 反馈
+description: 提交可复现的缺陷问题
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢提交问题。请尽量提供可复现信息，便于快速定位。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题描述
+      description: 发生了什么？期望行为是什么？
+      placeholder: 简要描述问题与期望
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      description: 请提供最小复现步骤
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志与报错
+      description: 请粘贴关键日志（注意脱敏）
+      render: shell
+
+  - type: input
+    id: version
+    attributes:
+      label: 代码版本
+      description: 分支 / commit / 发布版本
+      placeholder: main@<commit>
+
+  - type: textarea
+    id: env
+    attributes:
+      label: 运行环境
+      description: OS、Python、数据库、是否启用 Redis/RAG/MCP 等
+      placeholder: Windows 10 / Python 3.11 / MySQL 8.0 ...

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "WeChat_Agent"
+version = "0.1.0"
+description = "ReAct agent demo with WeCom robot server"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.12,<2",
+    "click>=8,<9",
+    "python-dotenv>=1,<2",
+    "flask>=3,<4",
+    "requests>=2.31,<3",
+    "mcp",
+    "pycryptodome>=3.19,<4",
+    "websocket-client>=1.6,<2",
+    "pymysql>=1.1,<2",
+    "chromadb>=0.5,<1",
+    "pypdf>=4,<6",
+    "pysqlite3-binary>=0.5.2; sys_platform == 'linux'",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tools*", "wxwork*"]
+
+[tool.setuptools]
+py-modules = ["agent", "wechat_robot_server", "build_rag_index"]

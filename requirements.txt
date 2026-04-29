@@ -1,0 +1,21 @@
+# Core LLM and CLI
+openai
+click
+python-dotenv
+
+# Web/API
+flask
+requests
+mcp
+
+# WeCom crypto and messaging
+pycryptodome
+websocket-client
+waitress
+
+# MySQL
+pymysql
+chromadb
+pypdf
+# Chroma needs sqlite >= 3.35; many Linux Python builds ship older (use pysqlite3)
+pysqlite3-binary>=0.5.2; sys_platform == "linux"
