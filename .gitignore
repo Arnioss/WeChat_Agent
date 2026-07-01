@@ -6,9 +6,9 @@ config/mcp_servers.json
 UI/
 app/assets/
 
-# 本地脚本与测试（不上传远端）
-scripts/
-tests/
+# 本地脚本与测试（不上传远端，仅项目根目录）
+/scripts/
+/tests/
 
 # 本地 Python 便携包（体积大，请用 install_deps.bat 或 pip 安装依赖）
 Python3.12/
