@@ -36,8 +36,8 @@
 - **上下文选择**：每轮用户消息先经 `ModelContextSelector`（`TOOL_SELECTOR_MODEL`）筛选候选 skill 与 tool，减轻主模型 prompt；候选不足时主 Agent 可调用 `expand_tool_context` 二次扩展。
 - **知识库问答**：`rag_summarize` 检索 `knowledge/` 并总结；多模态管线对 PDF/DOCX 内图做 caption 后入库；检索链路为 **Chroma 向量 + BM25 关键词 → RRF 融合 → rerank 精排**；流程类问题可展开连续分片（`RAG_FLOW_*`）。
 - **联网补充**：`bing_search`（必应中文）、`crawl_webpage`（抓取正文，部分站点黑名单）。
-- **MCP 扩展**：Streamable HTTP MCP 工具映射为 `mcp_<server>_<tool>`；本地亦可用 `mcp_server.py` 对外暴露 RAG 等工具。
-- **Skill 系统**：`skills/<name>/SKILL.md` 自动发现、检索匹配、注入提示词；支持 `/skill <name> <问题>` 强制激活；`allowed_tools` 限制激活 skill 后可见工具集。
+- **MCP 扩展**：Streamable HTTP MCP 工具映射为 `mcp_{server}_{tool}`；本地亦可用 `mcp_server.py` 对外暴露 RAG 等工具。
+- **Skill 系统**：`skills/{name}/SKILL.md` 自动发现、检索匹配、注入提示词；支持 `/skill {name} {question}` 强制激活；`allowed_tools` 限制激活 skill 后可见工具集。
 - **稳定性**：异步 `AgentRuntime`、按 `msgid` 去重、会话恢复、超时保护、按 `bot_id` 隔离、同会话 asyncio 锁防并发。
 
 ---
@@ -401,7 +401,7 @@ CLI 可通过 `LLM_KEY_CHANNEL=default|wechat|web` 指定 Key 分池（见 `.env
 
 - 启动时扫描 `skills/*/SKILL.md`（YAML front matter + Markdown 正文）。
 - 每轮按关键词 / 标签 / 优先级检索，将摘要注入系统提示词；激活 skill 后受 `allowed_tools` 约束可见工具集。
-- 强制激活：`/skill <skill-name> <问题>`
+- 强制激活：`/skill {skill-name} {question}`
 - 需要完整流程时优先 `load_skill_instructions(skill_name)`，分场景细节用 `load_skill_reference`。
 - `run_skill_script` 需 `SKILL_ENABLE_SCRIPTS=true`。
 
@@ -420,7 +420,7 @@ CLI 可通过 `LLM_KEY_CHANNEL=default|wechat|web` 指定 Key 分池（见 `.env
 
 支持标准 `{"mcpServers": {...}}` 与项目数组格式；**仅支持带 `url` 的 Streamable HTTP**，`command` / `args`（stdio）会跳过。
 
-工具命名：`mcp_<server_name>_<tool_name>`。单参数工具可传位置参数或单个 JSON 对象；多参数内置工具与 MCP 工具按 JSON 字段映射为**关键字参数**调用。
+工具命名：`mcp_{server_name}_{tool_name}`。单参数工具可传位置参数或单个 JSON 对象；多参数内置工具与 MCP 工具按 JSON 字段映射为**关键字参数**调用。
 
 `config/mcp_servers.json.example` 内置示例服务：
 
