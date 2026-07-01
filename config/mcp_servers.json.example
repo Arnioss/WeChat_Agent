@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "qyapi-mcp": {
+      "url": "https://qyapi.weixin.qq.com/mcp/robot-doc?apikey=YOUR_QYAPI_MCP_KEY",
+      "enabled": true,
+      "timeout_seconds": 20
+    }
+  }
+}

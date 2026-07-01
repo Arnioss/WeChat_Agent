@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-agent-demo"
+version = "0.1.0"
+description = "ReAct agent with CLI, Streamlit web UI, and WeCom WebSocket bot entrypoints"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.12,<2",
+    "click>=8,<9",
+    "python-dotenv>=1,<2",
+    "streamlit>=1.28,<2",
+    "flask>=3,<4",
+    "requests>=2.31,<3",
+    "httpx[socks]>=0.28,<1",
+    "PySocks>=1.7,<2",
+    "python-socks[asyncio]>=2.4,<3",
+    "mcp>=1.27.1",
+    "pycryptodome>=3.19,<4",
+    "websocket-client>=1.6,<2",
+    "wecom-aibot-python-sdk>=1.0.2,<2",
+    "pymysql>=1.1,<2",
+    "redis>=5,<7",
+    "chromadb>=1.0,<2; python_version >= '3.10'",
+    "chroma-hnswlib==0.7.5; sys_platform == 'win32' and python_version >= '3.10'",
+    "chroma-hnswlib>=0.7.6,<0.8; sys_platform != 'win32' and python_version >= '3.10'",
+    "pypdf>=4,<6",
+    "pymupdf>=1.24,<2",
+    "python-docx>=1.1,<2",
+    "Pillow>=10,<12",
+    "overrides>=7,<8",
+    "PyYAML>=6,<7",
+    "pysqlite3-binary>=0.5.2; sys_platform == 'linux'",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tools*", "wxwork*"]
+
+[tool.setuptools]
+py-modules = ["agent", "streamlit_app", "wecom_ws_server", "build_rag_index"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [
+    ".git",
+    ".idea",
+    ".mcp_cache",
+    ".pytest_cache",
+    ".rag_store",
+    "Python3.12",
+    "__pycache__",
+]

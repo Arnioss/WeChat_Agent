@@ -1,0 +1,42 @@
+# 环境与密钥
+.env
+config/mcp_servers.json
+
+# 本地 UI 参考图与 Web 静态资源（不上传远端）
+UI/
+app/assets/
+
+# 本地脚本与测试（不上传远端）
+scripts/
+tests/
+
+# 本地 Python 便携包（体积大，请用 install_deps.bat 或 pip 安装依赖）
+Python3.12/
+Python3.12.zip
+
+# RAG / MCP 运行时数据
+.rag_store/
+.mcp_cache/
+.cache/
+token.cache
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# IDE
+.idea/
+
+# 日志
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+/docs/ai_testing_guide.md
